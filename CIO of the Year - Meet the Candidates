@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIM Chicago - CIO of the Year | Meet the Candidates</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1a2744;
+            --navy-light: #243554;
+            --gold: #c9a84c;
+            --gold-light: #d4b76a;
+            --cream: #faf8f5;
+            --white: #ffffff;
+            --gray: #6b7280;
+            --light-gray: #e5e7eb;
+            --sim-blue: #00558c;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--navy);
+            line-height: 1.6;
+            overflow-x: hidden;
+            height: 100%;
+        }
+        .page {
+            display: none;
+            min-height: 100vh;
+            animation: fadeIn 0.6s ease;
+        }
+        .page.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .top-header {
+            background: linear-gradient(135deg, var(--sim-blue) 0%, #003d6b 100%);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .logo-section img {
+            height: 50px;
+            width: auto;
+            background: var(--white);
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+        .logo-text { color: var(--white); }
+        .logo-text .chapter {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+        .logo-text .event-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .page-nav {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .page-nav button {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .page-nav button:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+        }
+        .page-nav button.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+            font-weight: 600;
+        }
+        .box {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 2rem auto;
+            max-width: 1100px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border: 1px solid var(--light-gray);
+        }
+        .box-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .box-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .box-header .divider {
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        .box-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .hero-box {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+        .hero-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(201,168,76,0.15);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: var(--white);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        .hero-content h1 span {
+            color: var(--gold);
+            display: block;
+            font-size: 0.6em;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        .hero-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 1rem;
+        }
+        .hero-date .date-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        .hero-date .date-text { text-align: left; }
+        .hero-date .date-text strong {
+            display: block;
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+        .hero-date .date-text span {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        .hero-location {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+            margin-top: 0.5rem;
+        }
+        .hero-location .loc-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        .hero-location .loc-text { text-align: left; }
+        .hero-location .loc-text strong {
+            display: block;
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+        .hero-location .loc-text span {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        .sponsors-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+        .sponsor-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .sponsor-logo {
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            max-height: 60px;
+            width: auto;
+        }
+        .sponsor-logo:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        .sponsor-name {
+            font-size: 0.85rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+        .itinerary-list {
+            list-style: none;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .itinerary-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+        .itinerary-list li:hover {
+            background: rgba(201,168,76,0.05);
+            border-radius: 8px;
+        }
+        .itinerary-list li:last-child { border-bottom: none; }
+        .itinerary-time {
+            min-width: 100px;
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+        .itinerary-content h4 {
+            color: var(--navy);
+            margin-bottom: 0.25rem;
+        }
+        .itinerary-content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        .survey-container {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        .survey-question {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        .survey-question:last-child { border-bottom: none; }
+        .survey-question h4 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .rating-scale {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .rating-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            min-width: 60px;
+        }
+        .rating-item:hover { background: rgba(201,168,76,0.1); }
+        .rating-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--gray);
+            transition: all 0.2s ease;
+        }
+        .rating-item:hover .rating-circle {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .rating-label {
+            font-size: 0.75rem;
+            color: var(--gray);
+            text-align: center;
+        }
+        .connect-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .connect-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+        .connect-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+            border-color: var(--gold);
+        }
+        .connect-card .icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+        .connect-card h4 {
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .connect-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .connect-card a {
+            color: var(--sim-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .connect-card a:hover { color: var(--gold); }
+        .sim-info-box {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .sim-info-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+        .sim-info-box p {
+            color: rgba(255,255,255,0.85);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .sim-info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sim-info-box ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: rgba(255,255,255,0.85);
+        }
+        .sim-info-box ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--navy);
+            box-shadow: 0 4px 15px rgba(201,168,76,0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201,168,76,0.5);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+            margin-left: 0.5rem;
+        }
+        .btn-outline:hover {
+            background: var(--navy);
+            color: var(--white);
+        }
+        .btn-white {
+            background: var(--white);
+            color: var(--navy);
+            margin-top: 1rem;
+        }
+        .btn-white:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+        footer {
+            background: var(--navy);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .page-arrows {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--cream);
+        }
+        .page-arrows button {
+            background: var(--white);
+            border: 2px solid var(--light-gray);
+            color: var(--navy);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .page-arrows button:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+        }
+        .candidate-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--light-gray);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .candidate-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-color: var(--gold);
+        }
+        .candidate-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            flex-shrink: 0;
+            border: 3px solid var(--gold);
+        }
+        .candidate-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 0.25rem;
+        }
+        .candidate-info .candidate-role {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        .candidate-info p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        .award-info-box {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .award-info-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+        .award-info-box p {
+            color: rgba(255,255,255,0.85);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        .award-info-box ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+        .award-info-box ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: rgba(255,255,255,0.85);
+        }
+        .award-info-box ul li::before {
+            content: '★';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+        .event-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .detail-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+        .detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+            border-color: var(--gold);
+        }
+        .detail-card .icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+        .detail-card h4 {
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .detail-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .candidates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .candidate-card-small {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--light-gray);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .candidate-card-small:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-color: var(--gold);
+        }
+        .candidate-card-small h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .candidate-card-small .candidate-role {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .page-nav { display: none; }
+            .hero-content h1 { font-size: 2rem; }
+            .box { padding: 1.5rem; margin: 1rem; }
+            .sponsors-grid { gap: 2rem; }
+            .rating-scale { justify-content: center; }
+            .connect-grid { grid-template-columns: 1fr; }
+            .candidate-card { flex-direction: column; align-items: center; text-align: center; }
+            .event-details-grid { grid-template-columns: 1fr; }
+            .candidates-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+    <base target="_blank">
+<base target="_blank">
+</head>
+<body>
+    <!-- Sticky Header with SIM Logo -->
+    <header class="top-header">
+        <div class="logo-section">
+            <img src="sim-logo.png" alt="SIM Chicago Logo">
+            <div class="logo-text">
+                <div class="chapter">Chicago Chapter</div>
+                <div class="event-name">CIO of the Year</div>
+            </div>
+        </div>
+        <nav class="page-nav">
+            <button onclick="showPage('home')" class="active" id="btn-home">Home</button>
+            <button onclick="showPage('candidates')" id="btn-candidates">Candidates</button>
+            <button onclick="showPage('details')" id="btn-details">Event Details</button>
+            <button onclick="showPage('sponsors')" id="btn-sponsors">Sponsors</button>
+            <button onclick="showPage('survey')" id="btn-survey">Survey</button>
+            <button onclick="showPage('connect')" id="btn-connect">Connect</button>
+            <button onclick="showPage('sim')" id="btn-sim">About SIM</button>
+        </nav>
+    </header>
+
+    <!-- PAGE 1: HOME / HERO -->
+    <div class="page active" id="page-home">
+        <div class="page-arrows" style="padding: 1rem 2rem; justify-content: flex-end; background: transparent; position: absolute; top: 80px; right: 0; z-index: 100;">
+            <button onclick="showPage('candidates')">Next → Candidates</button>
+        </div>
+        <div class="hero-box">
+            <div class="hero-content">
+                <div class="hero-badge">Annual Awards Event</div>
+                <h1>
+                    CIO of the Year
+                    <span>Meet the Candidates</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Join us for an exclusive evening to meet the outstanding technology leaders nominated for the prestigious SIM Chicago CIO of the Year award
+                </p>
+                <div class="hero-date">
+                    <div class="date-icon">📅</div>
+                    <div class="date-text">
+                        <strong>Tuesday, September 15, 2026</strong>
+                        <span>5:30 PM – 8:30 PM</span>
+                    </div>
+                </div>
+                <div class="hero-location">
+                    <div class="loc-icon">📍</div>
+                    <div class="loc-text">
+                        <strong>East Bank Club</strong>
+                        <span>500 N Kingsbury St, Chicago, IL 60654</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-header">
+                <h2>Event Itinerary</h2>
+                <div class="divider"></div>
+            </div>
+            <ul class="itinerary-list">
+                <li>
+                    <div class="itinerary-time">5:30 PM</div>
+                    <div class="itinerary-content">
+                        <h4>Welcome &amp; Networking Reception</h4>
+                        <p>Arrive, check in, and connect with fellow technology leaders over refreshments</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="itinerary-time">6:15 PM</div>
+                    <div class="itinerary-content">
+                        <h4>Opening Remarks</h4>
+                        <p>Welcome from SIM Chicago leadership and introduction to the evening's program</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="itinerary-time">6:30 PM</div>
+                    <div class="itinerary-content">
+                        <h4>Meet the Candidates</h4>
+                        <p>Each nominated CIO presents their vision, achievements, and contributions to the technology community</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="itinerary-time">7:30 PM</div>
+                    <div class="itinerary-content">
+                        <h4>Audience Q&amp;A</h4>
+                        <p>Interactive session with the candidates and peer networking</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="itinerary-time">8:00 PM</div>
+                    <div class="itinerary-content">
+                        <h4>Networking &amp; Closing</h4>
+                        <p>Continue building connections with Chicago's top technology executives</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- PAGE 2: CANDIDATES -->
+    <div class="page" id="page-candidates">
+        <div class="page-arrows" style="padding: 1rem 2rem; justify-content: space-between; background: var(--cream);">
+            <button onclick="showPage('home')">← Home</button>
+            <button onclick="showPage('details')">Next → Details</button>
+        </div>
+        <div class="box">
+            <div class="box-header">
+                <h2>Meet the 2026 Candidates</h2>
+                <div class="divider"></div>
+                <p>Outstanding technology leaders nominated for the SIM Chicago CIO of the Year award</p>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <img src="cio-candidates-2026.png" alt="2026 CIO of the Year Candidates" style="width: 100%; max-width: 1000px; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.15);">
+            </div>
+
+            <div class="candidates-grid">
+                <div class="candidate-card-small">
+                    <h4>Teresa Andrea</h4>
+                    <span class="candidate-role">CIO, Silver Cross Hospital and Medical Center Vice President</span>
+                </div>
+                <div class="candidate-card-small">
+                    <h4>Michael Angoli</h4>
+                    <span class="candidate-role">CIO & Chief Information Security Officer, Beyond Risk Management</span>
+                </div>
+                <div class="candidate-card-small">
+                    <h4>Siva Balu</h4>
+                    <span class="candidate-role">SVP, Chief Information & Digital Officer, Quatro Health Solutions</span>
+                </div>
+                <div class="candidate-card-small">
+                    <h4>Jonathan Beyer</h4>
+                    <span class="candidate-role">Chief Information & Digital Officer, Evangelical Lutheran Church in America</span>
+                </div>
+                <div class="candidate-card-small">
+                    <h4>Tom Cesario</h4>
+                    <span class="candidate-role">VP of US Operations & IT, The Middleby Company</span>
+                </div>
+                <div class="candidate-card-small">
+                    <h4>Michael Chahino, Ed.D.</h4>
+                    <span class="candidate-role">CIO, Elgin Community College</span>
+                </div>
+                <div class="candidate-card-small">
+                    <h4>Manish Chawla</h4>
+                    <span class="candidate-role">CIO, IAT Insurance Group EVP</span>
+                </div>
+                <div class="candidate-card-small">
+                    <h4>Michael Crowley</h4>
+                    <span class="candidate-role">CIO, Shore Packaging</span>
+                </div>
+                <div class="candidate-card-small">
+                    <h4>Sunil Cutinho</h4>
+                    <span class="candidate-role">CIO, CME Group</span>
+                </div>
+                <div class="candidate-card-small">
+                    <h4>Jeff Davies</h4>
+                    <span class="candidate-role">CIO, Gift of Hope Organ & Tissue Donor Network</span>
+                </div>
+                <div class="candidate-card-small">
+                    <h4>Kester Fernandez</h4>
+                    <span class="candidate-role">CIO, VP Digital & Business Technologies, Barilla America, Inc.</span>
+                </div>
+                <div class="candidate-card-small">
+                    <h4>Brian Greenberg</h4>
+                    <span class="candidate-role">CIO, IRB International</span>
+                </div>
+                <div class="candidate-card-small">
+                    <h4>Joe Madda</h4>
+                    <span class="candidate-role">Sr. VP & CIO, Chief Information Technology Officer, BCS Partners LLC</span>
+                </div>
+                <div class="candidate-card-small">
+                    <h4>Vasu Modekurti</h4>
+                    <span class="candidate-role">CIO, UL Research Institutes, UL Standards & Engagement</span>
+                </div>
+                <div class="candidate-card-small">
+                    <h4>Kuldip Mohanty</h4>
+                    <span class="candidate-role">Sr. VP & CTO, Sargent & Lundy</span>
+                </div>
+                <div class="candidate-card-small">
+                    <h4>Akif Rahman</h4>
+                    <span class="candidate-role">CIO, Purfoods LLC dba Mom's Meals</span>
+                </div>
+                <div class="candidate-card-small">
+                    <h4>Kris Rao</h4>
+                    <span class="candidate-role">Chief Information & Digital Officer, HNI Corporation</span>
+                </div>
+                <div class="candidate-card-small">
+                    <h4>Matt Riley</h4>
+                    <span class="candidate-role">CIO, University of Illinois Chicago</span>
+                </div>
+                <div class="candidate-card-small">
+                    <h4>Tim Walter</h4>
+                    <span class="candidate-role">CIO, Edward Don & Company</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 3: EVENT DETAILS -->
+    <div class="page" id="page-details">
+        <div class="page-arrows" style="padding: 1rem 2rem; justify-content: space-between; background: var(--cream);">
+            <button onclick="showPage('candidates')">← Candidates</button>
+            <button onclick="showPage('sponsors')">Next → Sponsors</button>
+        </div>
+        <div class="box">
+            <div class="box-header">
+                <h2>About the Award</h2>
+                <div class="divider"></div>
+                <p>The SIM Chicago CIO of the Year award recognizes exceptional technology leadership</p>
+            </div>
+
+            <div class="award-info-box">
+                <h3>CIO of the Year Award</h3>
+                <p>The SIM Chicago CIO of the Year award is one of the most prestigious honors in the Chicago technology community. It recognizes Chief Information Officers who have demonstrated exceptional leadership, innovation, and impact in their organizations and the broader technology ecosystem.</p>
+
+                <p style="margin-top: 1.5rem;"><strong style="color: var(--gold);">Selection Criteria:</strong></p>
+                <ul>
+                    <li>Demonstrated leadership in driving technology strategy and digital transformation</li>
+                    <li>Proven ability to deliver business value through innovative technology solutions</li>
+                    <li>Commitment to developing talent and building high-performing teams</li>
+                    <li>Contributions to the technology community through mentorship and thought leadership</li>
+                    <li>Excellence in aligning IT initiatives with organizational goals and objectives</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong style="color: var(--gold);">About the Event:</strong></p>
+                <p>The "Meet the Candidates" event provides a unique opportunity for the SIM Chicago community to engage directly with the nominated CIOs. Attendees will hear firsthand about each candidate's vision, accomplishments, and approach to technology leadership. This intimate gathering fosters meaningful connections among Chicago's top technology executives and celebrates the outstanding contributions of our finalists.</p>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <div class="box-header">
+                    <h2>Venue Information</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="event-details-grid">
+                    <div class="detail-card">
+                        <div class="icon">🏢</div>
+                        <h4>East Bank Club</h4>
+                        <p>500 N Kingsbury St<br>Chicago, IL 60654</p>
+                    </div>
+                    <div class="detail-card">
+                        <div class="icon">📅</div>
+                        <h4>Date &amp; Time</h4>
+                        <p>Tuesday, September 15, 2026<br>5:30 PM – 8:30 PM</p>
+                    </div>
+                    <div class="detail-card">
+                        <div class="icon">👔</div>
+                        <h4>Dress Code</h4>
+                        <p>Business Professional<br>Attire</p>
+                    </div>
+                    <div class="detail-card">
+                        <div class="icon">🎟️</div>
+                        <h4>Registration</h4>
+                        <p>Open to SIM Members<br>and Invited Guests</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 4: SPONSORS -->
+    <div class="page" id="page-sponsors">
+        <div class="page-arrows" style="padding: 1rem 2rem; justify-content: space-between; background: var(--cream);">
+            <button onclick="showPage('details')">← Details</button>
+            <button onclick="showPage('survey')">Next → Survey</button>
+        </div>
+        <div class="box">
+            <div class="box-header">
+                <h2>Our Sponsors</h2>
+                <div class="divider"></div>
+                <p>This event is made possible through the support of our sponsors</p>
+            </div>
+            <div class="sponsors-grid">
+                <div class="sponsor-item">
+                    <img src="vsoft.png" alt="V-Soft Consulting" class="sponsor-logo" style="max-height: 60px;">
+                    <span class="sponsor-name">V-Soft Consulting</span>
+                </div>
+                <div class="sponsor-item">
+                    <img src="yash.png" alt="YASH Technologies" class="sponsor-logo" style="max-height: 60px;">
+                    <span class="sponsor-name">YASH Technologies</span>
+                </div>
+                <div class="sponsor-item">
+                    <img src="aitp.png" alt="AITP Chicago" class="sponsor-logo" style="max-height: 60px;">
+                    <span class="sponsor-name">AITP Chicago</span>
+                </div>
+                <div class="sponsor-item">
+                    <img src="exec.png" alt="The Executives' Club of Chicago" class="sponsor-logo" style="max-height: 60px;">
+                    <span class="sponsor-name">The Executives' Club of Chicago</span>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="color: var(--gray); margin-bottom: 1.5rem;">
+                    Interested in sponsoring future SIM Chicago events? <br>
+                    Contact us to learn about partnership opportunities.
+                </p>
+                <a href="mailto:info@sim-chicago.org" class="btn btn-primary">Become a Sponsor</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 5: SURVEY -->
+    <div class="page" id="page-survey">
+        <div class="page-arrows" style="padding: 1rem 2rem; justify-content: space-between; background: var(--cream);">
+            <button onclick="showPage('sponsors')">← Sponsors</button>
+            <button onclick="showPage('connect')">Next → Connect</button>
+        </div>
+        <div class="box">
+            <div class="box-header">
+                <h2>Event Feedback</h2>
+                <div class="divider"></div>
+                <p>Your feedback helps us create better experiences. All responses are anonymous.</p>
+            </div>
+
+            <div class="survey-container">
+                <div class="survey-question">
+                    <h4>1. How would you rate the overall event experience?</h4>
+                    <div class="rating-scale">
+                        <div class="rating-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeWDkTprrQY-YOcP9qOW-zUtMNIy66p8fOIlPIJiMiXDmdmgg/viewform?usp=dialog', '_blank')">
+                            <div class="rating-circle">1</div>
+                            <span class="rating-label">Poor</span>
+                        </div>
+                        <div class="rating-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeWDkTprrQY-YOcP9qOW-zUtMNIy66p8fOIlPIJiMiXDmdmgg/viewform?usp=dialog', '_blank')">
+                            <div class="rating-circle">2</div>
+                            <span class="rating-label">Fair</span>
+                        </div>
+                        <div class="rating-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeWDkTprrQY-YOcP9qOW-zUtMNIy66p8fOIlPIJiMiXDmdmgg/viewform?usp=dialog', '_blank')">
+                            <div class="rating-circle">3</div>
+                            <span class="rating-label">Good</span>
+                        </div>
+                        <div class="rating-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeWDkTprrQY-YOcP9qOW-zUtMNIy66p8fOIlPIJiMiXDmdmgg/viewform?usp=dialog', '_blank')">
+                            <div class="rating-circle">4</div>
+                            <span class="rating-label">Very Good</span>
+                        </div>
+                        <div class="rating-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeWDkTprrQY-YOcP9qOW-zUtMNIy66p8fOIlPIJiMiXDmdmgg/viewform?usp=dialog', '_blank')">
+                            <div class="rating-circle">5</div>
+                            <span class="rating-label">Excellent</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="survey-question">
+                    <h4>2. How valuable was the networking opportunity?</h4>
+                    <div class="rating-scale">
+                        <div class="rating-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeWDkTprrQY-YOcP9qOW-zUtMNIy66p8fOIlPIJiMiXDmdmgg/viewform?usp=dialog', '_blank')">
+                            <div class="rating-circle">1</div>
+                            <span class="rating-label">Poor</span>
+                        </div>
+                        <div class="rating-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeWDkTprrQY-YOcP9qOW-zUtMNIy66p8fOIlPIJiMiXDmdmgg/viewform?usp=dialog', '_blank')">
+                            <div class="rating-circle">2</div>
+                            <span class="rating-label">Fair</span>
+                        </div>
+                        <div class="rating-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeWDkTprrQY-YOcP9qOW-zUtMNIy66p8fOIlPIJiMiXDmdmgg/viewform?usp=dialog', '_blank')">
+                            <div class="rating-circle">3</div>
+                            <span class="rating-label">Good</span>
+                        </div>
+                        <div class="rating-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeWDkTprrQY-YOcP9qOW-zUtMNIy66p8fOIlPIJiMiXDmdmgg/viewform?usp=dialog', '_blank')">
+                            <div class="rating-circle">4</div>
+                            <span class="rating-label">Very Good</span>
+                        </div>
+                        <div class="rating-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeWDkTprrQY-YOcP9qOW-zUtMNIy66p8fOIlPIJiMiXDmdmgg/viewform?usp=dialog', '_blank')">
+                            <div class="rating-circle">5</div>
+                            <span class="rating-label">Excellent</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="survey-question">
+                    <h4>3. How likely are you to attend a future SIM Chicago event?</h4>
+                    <div class="rating-scale">
+                        <div class="rating-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeWDkTprrQY-YOcP9qOW-zUtMNIy66p8fOIlPIJiMiXDmdmgg/viewform?usp=dialog', '_blank')">
+                            <div class="rating-circle">1</div>
+                            <span class="rating-label">Not Likely</span>
+                        </div>
+                        <div class="rating-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeWDkTprrQY-YOcP9qOW-zUtMNIy66p8fOIlPIJiMiXDmdmgg/viewform?usp=dialog', '_blank')">
+                            <div class="rating-circle">2</div>
+                            <span class="rating-label">Somewhat</span>
+                        </div>
+                        <div class="rating-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeWDkTprrQY-YOcP9qOW-zUtMNIy66p8fOIlPIJiMiXDmdmgg/viewform?usp=dialog', '_blank')">
+                            <div class="rating-circle">3</div>
+                            <span class="rating-label">Likely</span>
+                        </div>
+                        <div class="rating-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeWDkTprrQY-YOcP9qOW-zUtMNIy66p8fOIlPIJiMiXDmdmgg/viewform?usp=dialog', '_blank')">
+                            <div class="rating-circle">4</div>
+                            <span class="rating-label">Very Likely</span>
+                        </div>
+                        <div class="rating-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeWDkTprrQY-YOcP9qOW-zUtMNIy66p8fOIlPIJiMiXDmdmgg/viewform?usp=dialog', '_blank')">
+                            <div class="rating-circle">5</div>
+                            <span class="rating-label">Definitely</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWDkTprrQY-YOcP9qOW-zUtMNIy66p8fOIlPIJiMiXDmdmgg/viewform?usp=dialog" target="_blank" class="btn btn-primary">Submit Feedback</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 6: CONNECT -->
+    <div class="page" id="page-connect">
+        <div class="page-arrows" style="padding: 1rem 2rem; justify-content: space-between; background: var(--cream);">
+            <button onclick="showPage('survey')">← Survey</button>
+            <button onclick="showPage('sim')">Next → About SIM</button>
+        </div>
+        <div class="box">
+            <div class="box-header">
+                <h2>Connect With Us</h2>
+                <div class="divider"></div>
+                <p>Stay connected with SIM Chicago and join our growing community of technology leaders</p>
+            </div>
+
+            <div class="connect-grid">
+                <div class="connect-card">
+                    <div class="icon">💼</div>
+                    <h4>LinkedIn</h4>
+                    <p>Follow SIM Chicago for professional updates and event announcements</p>
+                    <a href="https://www.linkedin.com/company/sim-chicago/">Follow on LinkedIn</a>
+                </div>
+                <div class="connect-card">
+                    <div class="icon">📧</div>
+                    <h4>Email</h4>
+                    <p>Get in touch with our team for questions or partnership inquiries</p>
+                    <a href="mailto:info@sim-chicago.org">info@sim-chicago.org</a>
+                </div>
+                <div class="connect-card">
+                    <div class="icon">🌐</div>
+                    <h4>Website</h4>
+                    <p>Learn more about SIM Chicago membership and upcoming events</p>
+                    <a href="https://www.sim-chicago.org/events/event_list.asp">sim-chicago.org</a>
+                </div>
+                <div class="connect-card">
+                    <div class="icon">📱</div>
+                    <h4>Social Media</h4>
+                    <p>Join the conversation and share your experience</p>
+                    <a href="https://www.facebook.com/login.php?skip_api_login=1&api_key=267954290242778&kid_directed_site=0&app_id=267954290242778&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Foauth%3Fclient_id%3D267954290242778%26redirect_uri%3Dhttps%253A%252F%252Fws.yourmembership.com%252FAms%252FSocialOAuth%252Ffacebook%26scope%3Demail%252Cpublic_profile%252Cuser_friends%26ret%3Dlogin%26fbapp_pres%3D0%26logger_id%3D26923fac-b48a-46d4-9bfd-d6cd93dd0b9f%26tp%3Dunspecified&cancel_url=https%3A%2F%2Fws.yourmembership.com%2FAms%2FSocialOAuth%2Ffacebook%3Ferror%3Daccess_denied%26error_code%3D200%26error_description%3DPermissions%2Berror%26error_reason%3Duser_denied%23_%3D_&display=page&locale=en_US&pl_dbl=0&is_business_login=0">Facebook</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 7: ABOUT SIM -->
+    <div class="page" id="page-sim">
+        <div class="page-arrows" style="padding: 1rem 2rem; justify-content: space-between; background: var(--cream);">
+            <button onclick="showPage('connect')">← Connect</button>
+            <button onclick="showPage('home')">Home →</button>
+        </div>
+        <div class="box">
+            <div class="box-header">
+                <h2>About SIM Chicago</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="sim-info-box">
+                <h3>Society for Information Management</h3>
+                <p>SIM is the premier network for IT leaders, comprised of over 5,000 members across 40 chapters in the United States. For over five decades, SIM has been the leading organization for senior IT executives, providing a unique forum for networking, professional development, and thought leadership.</p>
+
+                <p style="margin-top: 1.5rem;"><strong style="color: var(--gold);">Our Mission:</strong></p>
+                <ul>
+                    <li>To nurture a community of senior IT executives who support each other in their professional growth</li>
+                    <li>To foster meaningful connections between IT leaders across industries</li>
+                    <li>To advance the IT profession through knowledge sharing and mentorship</li>
+                    <li>To promote diversity and inclusion in technology leadership</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong style="color: var(--gold);">SIM Chicago Chapter:</strong></p>
+                <p>The Chicago chapter is one of SIM's most active communities, hosting regular events that bring together CIOs, CTOs, and senior technology leaders from the region's top organizations. Our CIO of the Year program celebrates the exceptional leaders who are driving innovation and excellence in technology across Chicago.</p>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="https://www.sim-chicago.org/events/event_list.asp" class="btn btn-white">Visit SIM Chicago Website</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>SIM Chicago &copy; 2026 | <a href="https://www.sim-chicago.org/events/event_list.asp">sim-chicago.org</a></p>
+        <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.7;">Society for Information Management - Chicago Chapter</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById('page-' + pageId).classList.add('active');
+            document.querySelectorAll('.page-nav button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('btn-' + pageId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
